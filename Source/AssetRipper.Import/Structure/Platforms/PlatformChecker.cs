@@ -1,10 +1,11 @@
-﻿using AssetRipper.Import.Logging;
+﻿using AssetRipper.Import.Configuration;
+using AssetRipper.Import.Logging;
 
 namespace AssetRipper.Import.Structure.Platforms
 {
 	public static class PlatformChecker
 	{
-		public static bool CheckPlatform(List<string> paths, [NotNullWhen(true)] out PlatformGameStructure? platformStructure, [NotNullWhen(true)] out MixedGameStructure? mixedStructure)
+		public static bool CheckPlatform(List<string> paths, [NotNullWhen(true)] out PlatformGameStructure? platformStructure, [NotNullWhen(true)] out MixedGameStructure? mixedStructure, ImportSettings settings)
 		{
 			platformStructure = null;
 			mixedStructure = null;
@@ -50,7 +51,7 @@ namespace AssetRipper.Import.Structure.Platforms
 				platformStructure = wiiUGameStructure;
 			}
 
-			if (CheckMixed(paths, out MixedGameStructure? mixedGameStructure))
+			if (CheckMixed(paths, out MixedGameStructure? mixedGameStructure, settings))
 			{
 				mixedStructure = mixedGameStructure;
 			}
@@ -250,11 +251,11 @@ namespace AssetRipper.Import.Structure.Platforms
 			return false;
 		}
 
-		private static bool CheckMixed(List<string> paths, [NotNullWhen(true)] out MixedGameStructure? gameStructure)
+		private static bool CheckMixed(List<string> paths, [NotNullWhen(true)] out MixedGameStructure? gameStructure, ImportSettings settings)
 		{
 			if (paths.Count > 0)
 			{
-				gameStructure = new MixedGameStructure(paths);
+				gameStructure = new MixedGameStructure(paths, settings);
 				if (paths.Count == 1)
 				{
 					Logger.Info(LogCategory.Import, $"Mixed game structure has been found at {paths[0]}");

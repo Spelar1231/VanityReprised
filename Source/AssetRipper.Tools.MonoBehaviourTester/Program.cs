@@ -28,7 +28,7 @@ internal static class Program
 		
 		Logger.Info("Determining platform...");
 		
-		PlatformChecker.CheckPlatform(new() { gamePath }, out PlatformGameStructure? platformStructure, out MixedGameStructure? _);
+		PlatformChecker.CheckPlatform(new() { gamePath }, out PlatformGameStructure? platformStructure, out MixedGameStructure? _, new ImportSettings());
 		if (platformStructure == null)
 		{
 			Logger.Error("Game structure is not supported");
@@ -36,7 +36,7 @@ internal static class Program
 		}
 
 		PlatformStructure = platformStructure;
-		PlatformStructure.CollectFiles(true);
+		PlatformStructure.CollectFiles(true, new ImportSettings());
 		
 		ScriptingBackend backend = PlatformStructure.Backend;
 		

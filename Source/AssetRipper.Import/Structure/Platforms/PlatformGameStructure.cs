@@ -1,3 +1,4 @@
+using AssetRipper.Import.Configuration;
 using AssetRipper.Import.Logging;
 using AssetRipper.Import.Structure.Assembly;
 using AssetRipper.Import.Structure.Assembly.Managers;
@@ -127,7 +128,7 @@ namespace AssetRipper.Import.Structure.Platforms
 			return null;
 		}
 
-		public virtual void CollectFiles(bool skipStreamingAssets, bool skipCampaignScenes, bool skipSpecialScenes)
+		public virtual void CollectFiles(bool skipStreamingAssets, ImportSettings settings)
 		{
 			if (this is MixedGameStructure)
 			{
@@ -142,14 +143,14 @@ namespace AssetRipper.Import.Structure.Platforms
 			CollectMainAssemblies();
 			if (!skipStreamingAssets)
 			{
-				CollectStreamingAssets(Files, skipCampaignScenes, skipSpecialScenes);
+				CollectStreamingAssets(Files, settings);
 			}
 		}
 
-		public virtual void CollectFiles(bool skipStreamingAssets)
+		/*public virtual void CollectFiles(bool skipStreamingAssets, ImportSettings settings)
 		{
 			CollectFiles(skipStreamingAssets, false, false);
-		}
+		}*/
 
 		protected void CollectGameFiles(DirectoryInfo root, IDictionary<string, string> files)
 		{
@@ -223,7 +224,7 @@ namespace AssetRipper.Import.Structure.Platforms
 		/// <summary>
 		/// Collect bundles from the Streaming Assets folder
 		/// </summary>
-		protected void CollectStreamingAssets(IDictionary<string, string> files, bool skipCampaignScenes, bool skipSpecialScenes)
+		protected void CollectStreamingAssets(IDictionary<string, string> files, ImportSettings settings)
 		{
 			if (string.IsNullOrWhiteSpace(StreamingAssetsPath))
 			{
@@ -234,20 +235,16 @@ namespace AssetRipper.Import.Structure.Platforms
 			DirectoryInfo streamingDirectory = new DirectoryInfo(StreamingAssetsPath);
 			if (streamingDirectory.Exists)
 			{
-				List<string> prefixesToIgnore = new List<string>();
-				if (skipCampaignScenes)
-					prefixesToIgnore.AddRange(campaignPrefixes);
-				if (skipSpecialScenes)
-					prefixesToIgnore.AddRange(specialScenePrefixes);
-
-				CollectAssetBundlesRecursively(streamingDirectory, files, prefixesToIgnore);
+				CollectAssetBundlesRecursively(streamingDirectory, files, settings);
+				// Temp line to add a bundle to decompile
+				// AddAssetBundle(files, "nightmared", @"C:\Users\20241533\Downloads\nightmared.bundle");
 			}
 		}
 
 		/// <summary>
 		/// Collect asset bundles only from this directory
 		/// </summary>
-		protected void CollectAssetBundles(DirectoryInfo root, IDictionary<string, string> files, List<string> prefixesToIgnore)
+		protected void CollectAssetBundles(DirectoryInfo root, IDictionary<string, string> files, ImportSettings settings)
 		{
 			foreach (FileInfo file in root.EnumerateFiles())
 			{
@@ -256,8 +253,173 @@ namespace AssetRipper.Import.Structure.Platforms
 				{
 					// Filter
 					string rawName = Path.GetFileNameWithoutExtension(file.Name);
-					if (prefixesToIgnore.Where(sceneName => rawName.StartsWith(sceneName)).Any())
-						continue;
+					if (rawName.StartsWith("campaign_scenes_") || rawName.StartsWith("specialscenes_scenes_"))
+					{
+						switch (rawName)
+						{
+							// Intermission
+							case "campaign_scenes_intermission1":
+								if (!settings.Export_campaign_scenes_intermission1) continue; break;
+
+							case "campaign_scenes_intermission2":
+								if (!settings.Export_campaign_scenes_intermission2) continue; break;
+							
+							// Layer 0
+							case "campaign_scenes_level0-1":
+								if (!settings.Export_campaign_scenes_level0_1) continue; break;
+
+							case "campaign_scenes_level0-2":
+								if (!settings.Export_campaign_scenes_level0_2) continue; break;
+
+							case "campaign_scenes_level0-3":
+								if (!settings.Export_campaign_scenes_level0_3) continue; break;
+
+							case "campaign_scenes_level0-4":
+								if (!settings.Export_campaign_scenes_level0_4) continue; break;
+
+							case "campaign_scenes_level0-5":
+								if (!settings.Export_campaign_scenes_level0_5) continue; break;
+
+							case "campaign_scenes_level0-s":
+								if (!settings.Export_campaign_scenes_level0_s) continue; break;
+
+							case "campaign_scenes_level0-e":
+								if (!settings.Export_campaign_scenes_level0_e) continue; break;
+
+							// Layer 1
+							case "campaign_scenes_level1-1":
+								if (!settings.Export_campaign_scenes_level1_1) continue; break;
+
+							case "campaign_scenes_level1-2":
+								if (!settings.Export_campaign_scenes_level1_2) continue; break;
+
+							case "campaign_scenes_level1-3":
+								if (!settings.Export_campaign_scenes_level1_3) continue; break;
+
+							case "campaign_scenes_level1-4":
+								if (!settings.Export_campaign_scenes_level1_4) continue; break;
+
+							case "campaign_scenes_level1-s":
+								if (!settings.Export_campaign_scenes_level1_s) continue; break;
+
+							case "campaign_scenes_level1-e":
+								if (!settings.Export_campaign_scenes_level1_e) continue; break;
+
+							// Layer 2
+							case "campaign_scenes_level2-1":
+								if (!settings.Export_campaign_scenes_level2_1) continue; break;
+
+							case "campaign_scenes_level2-2":
+								if (!settings.Export_campaign_scenes_level2_2) continue; break;
+
+							case "campaign_scenes_level2-3":
+								if (!settings.Export_campaign_scenes_level2_3) continue; break;
+
+							case "campaign_scenes_level2-4":
+								if (!settings.Export_campaign_scenes_level2_4) continue; break;
+
+							case "campaign_scenes_level2-s":
+								if (!settings.Export_campaign_scenes_level2_s) continue; break;
+
+							// Layer 3
+							case "campaign_scenes_level3-1":
+								if (!settings.Export_campaign_scenes_level3_1) continue; break;
+
+							case "campaign_scenes_level3-2":
+								if (!settings.Export_campaign_scenes_level3_2) continue; break;
+
+							// Layer 4
+							case "campaign_scenes_level4-1":
+								if (!settings.Export_campaign_scenes_level4_1) continue; break;
+
+							case "campaign_scenes_level4-2":
+								if (!settings.Export_campaign_scenes_level4_2) continue; break;
+
+							case "campaign_scenes_level4-3":
+								if (!settings.Export_campaign_scenes_level4_3) continue; break;
+
+							case "campaign_scenes_level4-4":
+								if (!settings.Export_campaign_scenes_level4_4) continue; break;
+
+							case "campaign_scenes_level4-s":
+								if (!settings.Export_campaign_scenes_level4_s) continue; break;
+
+							// Layer 5
+							case "campaign_scenes_level5-1":
+								if (!settings.Export_campaign_scenes_level5_1) continue; break;
+
+							case "campaign_scenes_level5-2":
+								if (!settings.Export_campaign_scenes_level5_2) continue; break;
+
+							case "campaign_scenes_level5-3":
+								if (!settings.Export_campaign_scenes_level5_3) continue; break;
+
+							case "campaign_scenes_level5-4":
+								if (!settings.Export_campaign_scenes_level5_4) continue; break;
+
+							case "campaign_scenes_level5-s":
+								if (!settings.Export_campaign_scenes_level5_s) continue; break;
+
+							// Layer 6
+							case "campaign_scenes_level6-1":
+								if (!settings.Export_campaign_scenes_level6_1) continue; break;
+
+							case "campaign_scenes_level6-2":
+								if (!settings.Export_campaign_scenes_level6_2) continue; break;
+
+							// Layer 7
+							case "campaign_scenes_level7-1":
+								if (!settings.Export_campaign_scenes_level5_1) continue; break;
+
+							case "campaign_scenes_level7-2":
+								if (!settings.Export_campaign_scenes_level5_2) continue; break;
+
+							case "campaign_scenes_level7-3":
+								if (!settings.Export_campaign_scenes_level5_3) continue; break;
+
+							case "campaign_scenes_level7-4":
+								if (!settings.Export_campaign_scenes_level5_4) continue; break;
+
+							case "campaign_scenes_level7-s":
+								if (!settings.Export_campaign_scenes_level5_s) continue; break;
+
+							// Layer P
+							case "campaign_scenes_levelp-1":
+								if (!settings.Export_campaign_scenes_levelp_1) continue; break;
+
+							case "campaign_scenes_levelp-2":
+								if (!settings.Export_campaign_scenes_levelp_2) continue; break;
+
+							// Specials
+							case "specialscenes_scenes_creditsmuseum2":
+								if (!settings.Export_specialscenes_scenes_creditsmuseum2) continue; break;
+
+							case "specialscenes_scenes_earlyaccessend":
+								if (!settings.Export_specialscenes_scenes_earlyaccessend) continue; break;
+
+							case "specialscenes_scenes_endless":
+								if (!settings.Export_specialscenes_scenes_endless) continue; break;
+
+							case "specialscenes_scenes_intro":
+								if (!settings.Export_specialscenes_scenes_intro) continue; break;
+
+							case "specialscenes_scenes_mainmenu":
+								if (!settings.Export_specialscenes_scenes_mainmenu) continue; break;
+
+							case "specialscenes_scenes_tundraassets":
+								if (!settings.Export_specialscenes_scenes_tundraassets) continue; break;
+
+							case "specialscenes_scenes_tutorial":
+								if (!settings.Export_specialscenes_scenes_tutorial) continue; break;
+
+							case "specialscenes_scenes_uk_construct":
+								if (!settings.Export_specialscenes_scenes_uk_construct) continue; break;
+
+							default:
+								Logger.Log(LogType.Warning, LogCategory.Processing, $"Unknown scene '{rawName}'");
+								continue;
+						}
+					}
 
 					// A very special case where Angry Level Loader generates extra bundles for backward compatibility
 					if (rawName.StartsWith("other_assets_") && rawName != "other_assets_all")
@@ -269,27 +431,27 @@ namespace AssetRipper.Import.Structure.Platforms
 			}
 		}
 
-		protected void CollectAssetBundles(DirectoryInfo root, IDictionary<string, string> files)
+		/*protected void CollectAssetBundles(DirectoryInfo root, IDictionary<string, string> files)
 		{
 			CollectAssetBundles(root, files, new List<string>());
-		}
+		}*/
 
 		/// <summary>
 		/// Collect asset bundles from this directory and all subdirectories
 		/// </summary>
-		protected void CollectAssetBundlesRecursively(DirectoryInfo root, IDictionary<string, string> files, List<string> prefixesToIgnore)
+		protected void CollectAssetBundlesRecursively(DirectoryInfo root, IDictionary<string, string> files, ImportSettings settings)
 		{
-			CollectAssetBundles(root, files, prefixesToIgnore);
+			CollectAssetBundles(root, files, settings);
 			foreach (DirectoryInfo directory in root.EnumerateDirectories())
 			{
-				CollectAssetBundlesRecursively(directory, files, prefixesToIgnore);
+				CollectAssetBundlesRecursively(directory, files, settings);
 			}
 		}
 
-		protected void CollectAssetBundlesRecursively(DirectoryInfo root, IDictionary<string, string> files)
+		/*protected void CollectAssetBundlesRecursively(DirectoryInfo root, IDictionary<string, string> files)
 		{
-			CollectAssetBundlesRecursively(root, files, new List<string>());
-		}
+			CollectAssetBundlesRecursively(root, files, );
+		}*/
 
 		protected static void CollectAssemblies(DirectoryInfo root, IDictionary<string, string> assemblies)
 		{

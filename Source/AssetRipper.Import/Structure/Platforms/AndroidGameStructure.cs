@@ -1,4 +1,6 @@
-﻿namespace AssetRipper.Import.Structure.Platforms
+﻿using AssetRipper.Import.Configuration;
+
+namespace AssetRipper.Import.Structure.Platforms
 {
 	internal sealed class AndroidGameStructure : PlatformGameStructure
 	{
@@ -66,10 +68,10 @@
 			DataPaths = dataPaths.ToArray();
 		}
 
-		public override void CollectFiles(bool skipStreamingAssets)
+		public override void CollectFiles(bool skipStreamingAssets, ImportSettings settings)
 		{
-			base.CollectFiles(skipStreamingAssets);
-			CollectApkAssetBundles(Files);
+			base.CollectFiles(skipStreamingAssets, settings);
+			CollectApkAssetBundles(Files, settings);
 		}
 
 		public static bool IsAndroidStructure(string path)
@@ -133,19 +135,19 @@
 			return matches;
 		}
 
-		private void CollectApkAssetBundles(IDictionary<string, string> files)
+		private void CollectApkAssetBundles(IDictionary<string, string> files, ImportSettings settings)
 		{
 			string assetPath = Path.Combine(m_root.FullName, AssetName);
 			DirectoryInfo root = new DirectoryInfo(assetPath);
 
-			CollectAssetBundles(root, files);
+			CollectAssetBundles(root, files, settings);
 			foreach (DirectoryInfo subDirectory in root.EnumerateDirectories())
 			{
 				if (subDirectory.Name == BinName)
 				{
 					continue;
 				}
-				CollectAssetBundlesRecursively(subDirectory, files);
+				CollectAssetBundlesRecursively(subDirectory, files, settings);
 			}
 		}
 

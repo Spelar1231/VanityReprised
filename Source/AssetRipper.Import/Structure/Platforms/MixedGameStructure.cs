@@ -1,4 +1,5 @@
-﻿using AssetRipper.Import.Logging;
+﻿using AssetRipper.Import.Configuration;
+using AssetRipper.Import.Logging;
 using AssetRipper.Import.Structure.Assembly;
 using AssetRipper.Import.Structure.Assembly.Managers;
 using AssetRipper.IO.Files.Streams.MultiFile;
@@ -7,7 +8,7 @@ namespace AssetRipper.Import.Structure.Platforms
 {
 	public sealed class MixedGameStructure : PlatformGameStructure
 	{
-		public MixedGameStructure(IEnumerable<string> paths)
+		public MixedGameStructure(IEnumerable<string> paths, ImportSettings settings)
 		{
 			HashSet<string> dataPaths = new HashSet<string>();
 			foreach (string path in SelectUniquePaths(paths))
@@ -22,7 +23,7 @@ namespace AssetRipper.Import.Structure.Platforms
 				else if (Directory.Exists(path))
 				{
 					DirectoryInfo directory = new DirectoryInfo(path);
-					CollectFromDirectory(directory, Files, Assemblies, dataPaths);
+					CollectFromDirectory(directory, Files, Assemblies, dataPaths, settings);
 				}
 				else
 				{
@@ -47,12 +48,12 @@ namespace AssetRipper.Import.Structure.Platforms
 			return paths.Select(t => MultiFileStream.GetFilePath(t)).Distinct();
 		}
 
-		private void CollectFromDirectory(DirectoryInfo root, IDictionary<string, string> files, IDictionary<string, string> assemblies, ISet<string> dataPaths)
+		private void CollectFromDirectory(DirectoryInfo root, IDictionary<string, string> files, IDictionary<string, string> assemblies, ISet<string> dataPaths, ImportSettings settings)
 		{
 			int count = files.Count;
 			CollectSerializedGameFiles(root, files);
 			CollectWebFiles(root, files);
-			CollectAssetBundles(root, files);
+			CollectAssetBundles(root, files, settings);
 			CollectAssembliesSafe(root, assemblies);
 			if (files.Count != count)
 			{
@@ -61,7 +62,7 @@ namespace AssetRipper.Import.Structure.Platforms
 
 			foreach (DirectoryInfo subDirectory in root.EnumerateDirectories())
 			{
-				CollectFromDirectory(subDirectory, files, assemblies, dataPaths);
+				CollectFromDirectory(subDirectory, files, assemblies, dataPaths, settings);
 			}
 		}
 

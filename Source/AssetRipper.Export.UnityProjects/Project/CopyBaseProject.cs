@@ -77,7 +77,7 @@ namespace AssetRipper.Export.UnityProjects.Project
 			}
 
 			// Try downloading from internet, fallback to local base project
-			Logger.Info("Downloading latest base project from the internet...");
+			/*Logger.Info("Downloading latest base project from the internet...");
 			Stream baseProjectStream = GetFileFromUrl(baseProjectUrl);
 			if (baseProjectStream != null)
 			{
@@ -98,7 +98,7 @@ namespace AssetRipper.Export.UnityProjects.Project
 			else
 			{
 				Logger.Warning("Failed to download the base project, will attempt to copy from local base project");
-			}
+			}*/
 
 			if (!File.Exists(baseProjectPath))
 			{

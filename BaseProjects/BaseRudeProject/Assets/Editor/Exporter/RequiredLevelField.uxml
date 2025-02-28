@@ -1,5 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
-    <ui:VisualElement style="flex-direction: row-reverse; justify-content: flex-start;">
-        <ui:Button text="Remove" name="remove-button" />
-    </ui:VisualElement>
-</ui:UXML>

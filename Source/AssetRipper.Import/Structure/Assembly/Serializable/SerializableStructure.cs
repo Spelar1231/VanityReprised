@@ -136,12 +136,12 @@ namespace AssetRipper.Import.Structure.Assembly.Serializable
 
 		private static void LogMonoBehaviourMismatch(SerializableStructure structure, int actual, int expected)
 		{
-			Logger.Error(LogCategory.Import, $"Unable to read MonoBehaviour Structure, because script {structure} layout mismatched binary content (read {actual} bytes, expected {expected} bytes).");
+			Logger.Info(LogCategory.Import, $"Unable to read MonoBehaviour Structure, because script {structure} layout mismatched binary content (read {actual} bytes, expected {expected} bytes).");
 		}
 
 		private static void LogMonoBehaviorReadException(SerializableStructure structure, Exception ex)
 		{
-			Logger.Error(LogCategory.Import, $"Unable to read MonoBehaviour Structure, because script {structure} layout mismatched binary content ({ex.GetType().Name}).");
+			Logger.Info(LogCategory.Import, $"Unable to read MonoBehaviour Structure, because script {structure} layout mismatched binary content ({ex.GetType().Name}).");
 		}
 
 		public int Depth { get; }

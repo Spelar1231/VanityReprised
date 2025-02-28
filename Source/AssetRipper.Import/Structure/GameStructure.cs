@@ -19,9 +19,9 @@ namespace AssetRipper.Import.Structure
 		private GameStructure(List<string> paths, CoreConfiguration configuration)
 		{
 			Logger.SendStatusChange("loading_step_detect_platform");
-			PlatformChecker.CheckPlatform(paths, out PlatformGameStructure? platformStructure, out MixedGameStructure? mixedStructure);
+			PlatformChecker.CheckPlatform(paths, out PlatformGameStructure? platformStructure, out MixedGameStructure? mixedStructure, configuration.ImportSettings);
 			PlatformStructure = platformStructure;
-			PlatformStructure?.CollectFiles(configuration.ImportSettings.IgnoreStreamingAssets, !configuration.ImportSettings.EnableCampaignSceneExport, !configuration.ImportSettings.EnableSpecialSceneExport);
+			PlatformStructure?.CollectFiles(configuration.ImportSettings.IgnoreStreamingAssets, configuration.ImportSettings);
 			MixedStructure = mixedStructure;
 			//MixedStructure?.CollectFiles(configuration.IgnoreStreamingAssets);
 			//The PlatformGameStructure constructor adds all the paths to the Assemblies and Files dictionaries

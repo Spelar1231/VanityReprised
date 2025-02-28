@@ -4,8 +4,10 @@ using AssetRipper.SourceGenerated.Classes.ClassID_21;
 using AssetRipper.SourceGenerated.Classes.ClassID_28;
 using AssetRipper.SourceGenerated.Classes.ClassID_48;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,7 +27,7 @@ namespace AssetRipper.Processing
 					if (!File.Exists("Resources/packageGuids.json"))
 						throw new IOException("Required file not found: Resources/packageGuids.json");
 
-					_data = JsonConvert.DeserializeObject<PackageGuids>(File.ReadAllText("Resources/packageGuids.json"));
+					_data = PackageGuids.FromJson(File.ReadAllText("Resources/packageGuids.json"));
 				}
 
 				return _data;

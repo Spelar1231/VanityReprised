@@ -23,8 +23,76 @@ public sealed record class ImportSettings
 		}
 	}
 
-	public bool EnableCampaignSceneExport { get; set; } = false;
-	public bool EnableSpecialSceneExport { get; set; } = false;
+	// Intermission
+	public bool Export_campaign_scenes_intermission1 { get; set; } = false;
+	public bool Export_campaign_scenes_intermission2 { get; set; } = false;
+
+	// Layer 0
+	[JsonIgnore] public bool Export_campaign_scenes_level0_1 { get; set; } = false;
+	[JsonIgnore] public bool Export_campaign_scenes_level0_2 { get; set; } = false;
+	[JsonIgnore] public bool Export_campaign_scenes_level0_3 { get; set; } = false;
+	[JsonIgnore] public bool Export_campaign_scenes_level0_4 { get; set; } = false;
+	[JsonIgnore] public bool Export_campaign_scenes_level0_5 { get; set; } = false;
+	[JsonIgnore] public bool Export_campaign_scenes_level0_s { get; set; } = false;
+	[JsonIgnore] public bool Export_campaign_scenes_level0_e { get; set; } = false;
+
+	// Layer 1
+	[JsonIgnore] public bool Export_campaign_scenes_level1_1 { get; set; } = false;
+	[JsonIgnore] public bool Export_campaign_scenes_level1_2 { get; set; } = false;
+	[JsonIgnore] public bool Export_campaign_scenes_level1_3 { get; set; } = false;
+	[JsonIgnore] public bool Export_campaign_scenes_level1_4 { get; set; } = false;
+	[JsonIgnore] public bool Export_campaign_scenes_level1_s { get; set; } = false;
+	[JsonIgnore] public bool Export_campaign_scenes_level1_e { get; set; } = false;
+
+	// Layer 2
+	[JsonIgnore] public bool Export_campaign_scenes_level2_1 { get; set; } = false;
+	[JsonIgnore] public bool Export_campaign_scenes_level2_2 { get; set; } = false;
+	[JsonIgnore] public bool Export_campaign_scenes_level2_3 { get; set; } = false;
+	[JsonIgnore] public bool Export_campaign_scenes_level2_4 { get; set; } = false;
+	[JsonIgnore] public bool Export_campaign_scenes_level2_s { get; set; } = false;
+
+	// Layer 3
+	[JsonIgnore] public bool Export_campaign_scenes_level3_1 { get; set; } = false;
+	[JsonIgnore] public bool Export_campaign_scenes_level3_2 { get; set; } = false;
+
+	// Layer 4
+	[JsonIgnore] public bool Export_campaign_scenes_level4_1 { get; set; } = false;
+	[JsonIgnore] public bool Export_campaign_scenes_level4_2 { get; set; } = false;
+	[JsonIgnore] public bool Export_campaign_scenes_level4_3 { get; set; } = false;
+	[JsonIgnore] public bool Export_campaign_scenes_level4_4 { get; set; } = false;
+	[JsonIgnore] public bool Export_campaign_scenes_level4_s { get; set; } = false;
+
+	// Layer 5
+	[JsonIgnore] public bool Export_campaign_scenes_level5_1 { get; set; } = false;
+	[JsonIgnore] public bool Export_campaign_scenes_level5_2 { get; set; } = false;
+	[JsonIgnore] public bool Export_campaign_scenes_level5_3 { get; set; } = false;
+	[JsonIgnore] public bool Export_campaign_scenes_level5_4 { get; set; } = false;
+	[JsonIgnore] public bool Export_campaign_scenes_level5_s { get; set; } = false;
+
+	// Layer 6
+	[JsonIgnore] public bool Export_campaign_scenes_level6_1 { get; set; } = false;
+	[JsonIgnore] public bool Export_campaign_scenes_level6_2 { get; set; } = false;
+
+	// Layer 7
+	[JsonIgnore] public bool Export_campaign_scenes_level7_1 { get; set; } = false;
+	[JsonIgnore] public bool Export_campaign_scenes_level7_2 { get; set; } = false;
+	[JsonIgnore] public bool Export_campaign_scenes_level7_3 { get; set; } = false;
+	[JsonIgnore] public bool Export_campaign_scenes_level7_4 { get; set; } = false;
+	[JsonIgnore] public bool Export_campaign_scenes_level7_s { get; set; } = false;
+
+	// Layer P
+	[JsonIgnore] public bool Export_campaign_scenes_levelp_1 { get; set; } = false;
+	[JsonIgnore] public bool Export_campaign_scenes_levelp_2 { get; set; } = false;
+
+	// Specials
+	[JsonIgnore] public bool Export_specialscenes_scenes_creditsmuseum2 { get; set; } = false;
+	[JsonIgnore] public bool Export_specialscenes_scenes_earlyaccessend { get; set; } = false;
+	[JsonIgnore] public bool Export_specialscenes_scenes_endless { get; set; } = false;
+	[JsonIgnore] public bool Export_specialscenes_scenes_intro { get; set; } = false;
+	[JsonIgnore] public bool Export_specialscenes_scenes_mainmenu { get; set; } = false;
+	[JsonIgnore] public bool Export_specialscenes_scenes_tundraassets { get; set; } = false;
+	[JsonIgnore] public bool Export_specialscenes_scenes_tutorial { get; set; } = false;
+	[JsonIgnore] public bool Export_specialscenes_scenes_uk_construct { get; set; } = false;
 
 	/// <summary>
 	/// How the StreamingAssets folder is handled

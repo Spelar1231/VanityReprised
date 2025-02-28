@@ -36,8 +36,55 @@ public class ExportHandler
 			ScriptContentLevel = ScriptContentLevel.Level1,
 
 			// Preserve custom settings
-			EnableCampaignSceneExport = Settings.ImportSettings.EnableCampaignSceneExport,
-			EnableSpecialSceneExport = Settings.ImportSettings.EnableSpecialSceneExport,
+			Export_campaign_scenes_intermission1 = Settings.ImportSettings.Export_campaign_scenes_intermission1,
+			Export_campaign_scenes_intermission2 = Settings.ImportSettings.Export_campaign_scenes_intermission2,
+			Export_campaign_scenes_level0_1 = Settings.ImportSettings.Export_campaign_scenes_level0_1,
+			Export_campaign_scenes_level0_2 = Settings.ImportSettings.Export_campaign_scenes_level0_2,
+			Export_campaign_scenes_level0_3 = Settings.ImportSettings.Export_campaign_scenes_level0_3,
+			Export_campaign_scenes_level0_4 = Settings.ImportSettings.Export_campaign_scenes_level0_4,
+			Export_campaign_scenes_level0_5 = Settings.ImportSettings.Export_campaign_scenes_level0_5,
+			Export_campaign_scenes_level0_s = Settings.ImportSettings.Export_campaign_scenes_level0_s,
+			Export_campaign_scenes_level0_e = Settings.ImportSettings.Export_campaign_scenes_level0_e,
+			Export_campaign_scenes_level1_1 = Settings.ImportSettings.Export_campaign_scenes_level1_1,
+			Export_campaign_scenes_level1_2 = Settings.ImportSettings.Export_campaign_scenes_level1_2,
+			Export_campaign_scenes_level1_3 = Settings.ImportSettings.Export_campaign_scenes_level1_3,
+			Export_campaign_scenes_level1_4 = Settings.ImportSettings.Export_campaign_scenes_level1_4,
+			Export_campaign_scenes_level1_s = Settings.ImportSettings.Export_campaign_scenes_level1_s,
+			Export_campaign_scenes_level1_e = Settings.ImportSettings.Export_campaign_scenes_level1_e,
+			Export_campaign_scenes_level2_1 = Settings.ImportSettings.Export_campaign_scenes_level2_1,
+			Export_campaign_scenes_level2_2 = Settings.ImportSettings.Export_campaign_scenes_level2_2,
+			Export_campaign_scenes_level2_3 = Settings.ImportSettings.Export_campaign_scenes_level2_3,
+			Export_campaign_scenes_level2_4 = Settings.ImportSettings.Export_campaign_scenes_level2_4,
+			Export_campaign_scenes_level2_s = Settings.ImportSettings.Export_campaign_scenes_level2_s,
+			Export_campaign_scenes_level3_1 = Settings.ImportSettings.Export_campaign_scenes_level3_1,
+			Export_campaign_scenes_level3_2 = Settings.ImportSettings.Export_campaign_scenes_level3_2,
+			Export_campaign_scenes_level4_1 = Settings.ImportSettings.Export_campaign_scenes_level4_1,
+			Export_campaign_scenes_level4_2 = Settings.ImportSettings.Export_campaign_scenes_level4_2,
+			Export_campaign_scenes_level4_3 = Settings.ImportSettings.Export_campaign_scenes_level4_3,
+			Export_campaign_scenes_level4_4 = Settings.ImportSettings.Export_campaign_scenes_level4_4,
+			Export_campaign_scenes_level4_s = Settings.ImportSettings.Export_campaign_scenes_level4_s,
+			Export_campaign_scenes_level5_1 = Settings.ImportSettings.Export_campaign_scenes_level5_1,
+			Export_campaign_scenes_level5_2 = Settings.ImportSettings.Export_campaign_scenes_level5_2,
+			Export_campaign_scenes_level5_3 = Settings.ImportSettings.Export_campaign_scenes_level5_3,
+			Export_campaign_scenes_level5_4 = Settings.ImportSettings.Export_campaign_scenes_level5_4,
+			Export_campaign_scenes_level5_s = Settings.ImportSettings.Export_campaign_scenes_level5_s,
+			Export_campaign_scenes_level6_1 = Settings.ImportSettings.Export_campaign_scenes_level6_1,
+			Export_campaign_scenes_level6_2 = Settings.ImportSettings.Export_campaign_scenes_level6_2,
+			Export_campaign_scenes_level7_1 = Settings.ImportSettings.Export_campaign_scenes_level7_1,
+			Export_campaign_scenes_level7_2 = Settings.ImportSettings.Export_campaign_scenes_level7_2,
+			Export_campaign_scenes_level7_3 = Settings.ImportSettings.Export_campaign_scenes_level7_3,
+			Export_campaign_scenes_level7_4 = Settings.ImportSettings.Export_campaign_scenes_level7_4,
+			Export_campaign_scenes_level7_s = Settings.ImportSettings.Export_campaign_scenes_level7_s,
+			Export_campaign_scenes_levelp_1 = Settings.ImportSettings.Export_campaign_scenes_levelp_1,
+			Export_campaign_scenes_levelp_2 = Settings.ImportSettings.Export_campaign_scenes_levelp_2,
+			Export_specialscenes_scenes_creditsmuseum2 = Settings.ImportSettings.Export_specialscenes_scenes_creditsmuseum2,
+			Export_specialscenes_scenes_earlyaccessend = Settings.ImportSettings.Export_specialscenes_scenes_earlyaccessend,
+			Export_specialscenes_scenes_endless = Settings.ImportSettings.Export_specialscenes_scenes_endless,
+			Export_specialscenes_scenes_intro = Settings.ImportSettings.Export_specialscenes_scenes_intro,
+			Export_specialscenes_scenes_mainmenu = Settings.ImportSettings.Export_specialscenes_scenes_mainmenu,
+			Export_specialscenes_scenes_tundraassets = Settings.ImportSettings.Export_specialscenes_scenes_tundraassets,
+			Export_specialscenes_scenes_tutorial = Settings.ImportSettings.Export_specialscenes_scenes_tutorial,
+			Export_specialscenes_scenes_uk_construct = Settings.ImportSettings.Export_specialscenes_scenes_uk_construct,
 		};
 
 		Settings.ExportSettings = new ExportSettings()
@@ -158,6 +205,7 @@ public class ExportHandler
 		// yield return new StreamingAssetsPostExporter();
 		// yield return new DllPostExporter();
 		// yield return new PathIdMapExporter();
+		yield return new DeleteSourceGeneratedScripts();
 		yield return new CopyBaseProject();
 	}
 

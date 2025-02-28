@@ -1,4 +1,5 @@
-﻿using AssetRipper.Import.Structure.Assembly;
+﻿using AssetRipper.Import.Configuration;
+using AssetRipper.Import.Structure.Assembly;
 
 namespace AssetRipper.Import.Structure.Platforms
 {
@@ -91,13 +92,13 @@ namespace AssetRipper.Import.Structure.Platforms
 			return false;
 		}
 
-		private void CollectiOSStreamingAssets(DirectoryInfo root, IDictionary<string, string> files)
+		private void CollectiOSStreamingAssets(DirectoryInfo root, IDictionary<string, string> files, ImportSettings settings)
 		{
 			string streamingPath = Path.Combine(root.FullName, iOSStreamingName);
 			DirectoryInfo streamingDirectory = new DirectoryInfo(streamingPath);
 			if (streamingDirectory.Exists)
 			{
-				CollectAssetBundlesRecursively(root, files);
+				CollectAssetBundlesRecursively(root, files, settings);
 			}
 		}
 

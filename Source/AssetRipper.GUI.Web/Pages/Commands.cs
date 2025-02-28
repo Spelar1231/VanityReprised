@@ -43,9 +43,56 @@ public static class Commands
 		{
 			IFormCollection form = await request.ReadFormAsync();
 
-			GameFileLoader.Settings.ImportSettings.EnableCampaignSceneExport = form.ContainsKey(nameof(ImportSettings.EnableCampaignSceneExport));
-			GameFileLoader.Settings.ImportSettings.EnableSpecialSceneExport = form.ContainsKey(nameof(ImportSettings.EnableSpecialSceneExport));
-			
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_intermission1 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_intermission1));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_intermission2 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_intermission2));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level0_1 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level0_1));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level0_2 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level0_2));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level0_3 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level0_3));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level0_4 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level0_4));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level0_5 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level0_5));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level0_s = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level0_s));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level0_e = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level0_e));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level1_1 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level1_1));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level1_2 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level1_2));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level1_3 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level1_3));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level1_4 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level1_4));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level1_s = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level1_s));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level1_e = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level1_e));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level2_1 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level2_1));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level2_2 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level2_2));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level2_3 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level2_3));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level2_4 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level2_4));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level2_s = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level2_s));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level3_1 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level3_1));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level3_2 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level3_2));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level4_1 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level4_1));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level4_2 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level4_2));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level4_3 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level4_3));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level4_4 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level4_4));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level4_s = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level4_s));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level5_1 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level5_1));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level5_2 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level5_2));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level5_3 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level5_3));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level5_4 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level5_4));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level5_s = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level5_s));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level6_1 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level6_1));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level6_2 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level6_2));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level7_1 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level7_1));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level7_2 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level7_2));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level7_3 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level7_3));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level7_4 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level7_4));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level7_s = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_level7_s));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_levelp_1 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_levelp_1));
+			GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_levelp_2 = form.ContainsKey(nameof(ImportSettings.Export_campaign_scenes_levelp_2));
+			GameFileLoader.Settings.ImportSettings.Export_specialscenes_scenes_creditsmuseum2 = form.ContainsKey(nameof(ImportSettings.Export_specialscenes_scenes_creditsmuseum2));
+			GameFileLoader.Settings.ImportSettings.Export_specialscenes_scenes_earlyaccessend = form.ContainsKey(nameof(ImportSettings.Export_specialscenes_scenes_earlyaccessend));
+			GameFileLoader.Settings.ImportSettings.Export_specialscenes_scenes_endless = form.ContainsKey(nameof(ImportSettings.Export_specialscenes_scenes_endless));
+			GameFileLoader.Settings.ImportSettings.Export_specialscenes_scenes_intro = form.ContainsKey(nameof(ImportSettings.Export_specialscenes_scenes_intro));
+			GameFileLoader.Settings.ImportSettings.Export_specialscenes_scenes_mainmenu = form.ContainsKey(nameof(ImportSettings.Export_specialscenes_scenes_mainmenu));
+			GameFileLoader.Settings.ImportSettings.Export_specialscenes_scenes_tundraassets = form.ContainsKey(nameof(ImportSettings.Export_specialscenes_scenes_tundraassets));
+			GameFileLoader.Settings.ImportSettings.Export_specialscenes_scenes_tutorial = form.ContainsKey(nameof(ImportSettings.Export_specialscenes_scenes_tutorial));
+			GameFileLoader.Settings.ImportSettings.Export_specialscenes_scenes_uk_construct = form.ContainsKey(nameof(ImportSettings.Export_specialscenes_scenes_uk_construct));
+
 			string? path;
 			if (form.TryGetValue("Path", out StringValues values))
 			{

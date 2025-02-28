@@ -93,7 +93,7 @@ public static class ScriptHashing
 			if (!File.Exists("Resources/packageGuids.json"))
 				throw new IOException("Required file not found: Resources/packageGuids.json");
 
-			packageGuids = JsonConvert.DeserializeObject<PackageGuids>(File.ReadAllText("Resources/packageGuids.json"));
+			packageGuids = PackageGuids.FromJson(File.ReadAllText("Resources/packageGuids.json"));
 		}
 
 		string namespaceStr = Encoding.UTF8.GetString(@namespace);
