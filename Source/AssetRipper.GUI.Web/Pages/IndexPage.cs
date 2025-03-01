@@ -175,6 +175,14 @@ public sealed class IndexPage : DefaultPage
 				WriteCheckBox(writer, "7-4", GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level7_4, nameof(ImportSettings.Export_campaign_scenes_level7_4), enabled);
 				WriteCheckBox(writer, "7-S", GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_level7_s, nameof(ImportSettings.Export_campaign_scenes_level7_s), enabled);
 			}
+
+			// Layer P
+			using (new Details(writer).End())
+			{
+				new Summary(writer).Close("Primes");
+				WriteCheckBox(writer, "P-1", GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_levelp_1, nameof(ImportSettings.Export_campaign_scenes_levelp_1), enabled);
+				WriteCheckBox(writer, "P-2", GameFileLoader.Settings.ImportSettings.Export_campaign_scenes_levelp_2, nameof(ImportSettings.Export_campaign_scenes_levelp_2), enabled);
+			}
 		}
 
 		// Special scenes
