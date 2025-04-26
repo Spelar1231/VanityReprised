@@ -16,6 +16,7 @@ namespace AssetRipper.Export.UnityProjects.Project
 			string[] scriptsToDelete =
 			{
 				Path.Combine(scriptsDirectory, "Assembly-CSharp", "UnitySourceGeneratedAssemblyMonoScriptTypes_v1.cs"),
+				Path.Combine(scriptsDirectory, "Assembly-CSharp", "__JobReflectionRegistrationOutput__1221673671587648887.cs"),
 				Path.Combine(scriptsDirectory, "Naelstrof.JigglePhysics", "UnitySourceGeneratedAssemblyMonoScriptTypes_v1.cs"),
 				Path.Combine(scriptsDirectory, "NewBlood.LegacyInput", "UnitySourceGeneratedAssemblyMonoScriptTypes_v1.cs"),
 			};
